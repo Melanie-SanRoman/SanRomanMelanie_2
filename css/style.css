@@ -1,0 +1,354 @@
+/* CENTRAR EN PAGINA */
+
+/* CENTRA BODY */
+body {
+  background: #FAF6E1;
+  padding: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* DIV CONTENIDO */
+
+#content {
+  border: 10px solid #F0C7FA;
+  background: rgb(255, 255, 255);
+  display: grid;
+
+  grid-template-areas:
+    "header header header"
+    "aside main main"
+    "footer footer footer";
+}
+
+/* TITULO */
+h1 {
+  color: #697F80;
+  font-size: 2em;
+  font-weight: 600;
+  font-family: Helvetica, sans-serif;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+/* HEADER */
+
+header {
+  grid-area: header;
+  background: #F0C7FA;
+  padding: 5px;
+  display: flex;
+  justify-content: end;
+
+  /* OPCIONES "Abrir imagen", "Guardar", "Descartar" */
+  button, #label-img {
+    font-size: 1.2em;
+    margin: 2px;
+    padding: 5px;
+    border: 0px;
+    background: transparent;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow:
+        1px 1px #54736B,
+        inset -1px -1px #BAF5F5,
+        inset 1px 1px #F9F3D5;
+    }
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+}
+
+/* ASIDE (NAV DE HERRAMIENTAS Y UNDO)*/
+aside {
+  grid-area: aside;
+  background: #F0C7FA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* SLIDER */
+  .slider {
+    width: 4em;
+  }
+
+  /* NAV HERRAMIENTES */
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+
+    /* ESTILO SLIDER */
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 25px;
+      background: transparent;
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track {
+      height: 5px;
+      background: #967999;
+      border-radius: 2.5px;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 15px;
+      height: 15px;
+      background: #967999;
+      border-radius: 50%;
+      cursor: pointer;
+      margin-top: -5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      transition: 0.3s;
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover {
+      background: #F0C7FA;
+      border: 1px solid #967999;
+    }
+  }
+
+  button {
+    width: 4em;
+    height: 4em;
+  }
+
+  #undo {
+    width: 2em;
+    height: 2em;
+    padding: 1px;
+    margin-top: 10px;
+  }
+}
+
+/* MAIN (CONTIENE CANVAS*/
+
+main {
+  display: flex;
+  justify-content: center;
+  grid-area: main;
+  padding: 16px;
+  background: #D3F5F6;
+}
+
+/* CANVAS */
+
+/* DA ESTILO AL CANVAS */
+canvas {
+  border-radius: 5px;
+  border: #967999 solid 2px;
+  outline: none;
+  background-color: rgb(255, 255, 255);
+}
+
+/* FOOTER */
+
+footer {
+  grid-area: footer;
+  background: #F0C7FA;
+  padding: 4px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+  /* DIV QUE CONTIENE PICKER Y COLORES PREDEFINIDOS */
+  #color {
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+    margin: 1em 0.5em;
+
+    .input-color, button, #color-picker {
+      border-radius: 50%;
+      
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    
+    /* COLOR PICKER */
+    .input-color {
+      overflow: hidden;
+      width: 3em;
+      height: 3em;
+      border: 2px solid #967999;
+
+      #color-picker {
+        padding: 0;
+        width: 150%;
+        height: 150%;
+        margin: -25%;
+      }
+    }
+
+    /* DIV DE COLORES PREDEFINIDOS */
+    #colors-predef {
+      display: flex;
+      justify-content: center;
+      gap: 0.5em;
+
+      button {
+        width: 2em;
+        height: 2em;
+        border: transparent;
+
+        &:hover {
+          border: 2px solid #F0C7FA;
+        }
+      }
+    }
+  }
+
+  /* TEXTO (PALETA DE COLORES Y FILTROS) */
+  p {
+    margin: 1em 0.5em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.2em;
+  }
+
+  /* DIV QUE CONTIENE BOTONES PARA APLICAR FILTROS */
+  #filtro {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1em 0.5em;
+    gap: 0.5em;
+
+    button {
+      font-weight: bold;
+    }
+  }
+}
+
+/* BOTONES DE HERRAMIENTAS Y FILTROS */
+
+.class-buttons {
+  button {
+    padding: 8px 8px;
+    background-color: transparent;
+    color: #967999;
+    border: 2px solid #967999;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color color 0.3s;
+
+    &:hover {
+      background-color: #967999;
+      color: #ffffff;
+    }
+
+    &.active {
+      background-color: #967999;
+      color: #ffffff;
+    }
+  }
+}
+
+/* MODAL */
+
+/* DA ESTILO AL DIV MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  /* se ubica arriba del contenido */
+  top: 0;
+  left: 0;
+  /* ocupa todo el ancho y alto de la pantalla */
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* fondo negro transparente*/
+  z-index: 1;
+  /* Define la profundidad del elemento en la pantalla, o sea, si va adelante o detrás de otros elementos. */
+}
+
+/* DA ESTILO AL CONTENIDO DEL MODAL */
+.info-modal {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  margin: 180px auto;
+  width: 50%;
+  overflow-y: auto;
+  border-radius: 12px;
+  text-align: center;
+  align-items: center;
+  font-family: "Segoe UI", sans-serif;
+  animation: fadeIn 0.8s ease;
+  animation: fadeOut 0.8s ease;
+
+  h2 {
+    margin-top: 0;
+    color: #967999;
+  }
+
+  button {
+    padding: 8px 8px;
+    background-color: #967999;
+    color: #ffffff;
+    border: 2px solid #967999;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color color 0.3s;
+
+    &:hover {
+      background-color: #ffffff;
+      color: #967999;
+    }
+  }
+}
+
+/* ANIMACION DEL MODAL, cuando se abre y se cierra*/
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+.info-modal.fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.info-modal.fade-out {
+  animation: fadeOut 0.4s ease forwards;
+}
+
+
+/* PALETA DE COLORES */
+
+/* PASTELES:
+  turquesa: #D3F5F6
+  amarillo: #F9F3D5
+  lila: F0C7FA*/
+
+/* OSCUROS:
+  #54736B
+  #756F57
+  #967999 */
