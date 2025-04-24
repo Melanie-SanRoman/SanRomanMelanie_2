@@ -1,25 +1,13 @@
 
-class Pen extends Herramienta{
+class Pen extends Eraser {
     constructor(posX, posY, context, fill) {
-        super(posX,posY,context);
-        this.fill = fill;
+        super(posX, posY, context);
+        this.context.fillStyle = fill;
     }
 
     /**
      * Dibuja como un lapiz sobre el canvas siguiendo el mouse
+     * Utiliza el metodo de la clase padre 
      */
-    execute(offsetX, offsetY) {
-        this.context.fillStyle = this.fill;
-
-        this.context.beginPath();
-        this.context.arc(offsetX, offsetY, this.lineWidth, 0, 2 * Math.PI);
-        this.context.fill(); 
-        this.context.stroke();
-
-    }
-
-    setXeY(posX, posY) {
-        this.posX = posX;
-        this.posY = posY;
-    }
+    // execute(offsetX, offsetY)    
 }
