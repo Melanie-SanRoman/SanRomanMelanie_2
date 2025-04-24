@@ -57,6 +57,7 @@ let rectActive = false;
 CANVAS.addEventListener('mousedown', startDrawing);
 CANVAS.addEventListener('mousemove', draw);
 CANVAS.addEventListener('mouseup', stopDrawing);
+CANVAS.addEventListener('mouseleave', stopDrawing);
 
 // OPCIONES DE HEADER
 document.getElementById('btn-descartar').addEventListener('click', descartar);
