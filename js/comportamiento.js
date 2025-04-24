@@ -200,6 +200,16 @@ function startDrawing(e) {
 
     mouseDown = true;
     mouseUp = false;
+
+    // Dibuja ai hace click, es decir, un punto, tanto en lapiz como goma
+    if (penActive) {
+        pen.setXeY(offsetX, offsetY);
+        draw(e);
+    }
+    if (eraserActive) {
+        eraser.setXeY(offsetX, offsetY);
+        draw(e);
+    }
 }
 
 /**
