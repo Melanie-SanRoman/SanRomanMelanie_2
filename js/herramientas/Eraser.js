@@ -8,7 +8,8 @@ class Eraser extends Herramienta{
      */
     execute(offsetX, offsetY) {
         this.context.beginPath();
-        this.context.arc(offsetX, offsetY, this.width, 0, 2 * Math.PI);
+        this.context.arc(offsetX, offsetY, this.lineWidth, 0, 2 * Math.PI);
+        this.context.fill();
         this.context.stroke();
     }
 }
